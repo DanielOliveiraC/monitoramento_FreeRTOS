@@ -13,7 +13,7 @@ Este projeto é desenvolvido em C para o Raspberry Pi Pico W e utiliza o sistema
 - A task do LED acende o LED por um curto intervalo de tempo ao receber a notificação.
 
 ## Estrutura do Código <img src="https://github.com/user-attachments/assets/59ce126f-72d6-43ad-8381-2ced4f2ac2ad" width="30"></img>
-### Importações e Pinagem <img src="https://github.com/user-attachments/assets/76f0624e-6cfa-4d70-8661-9caa7ed44352" width="30"></img>
+### Importações e Pinagem <img src="https://github.com/user-attachments/assets/b7bb9574-715f-4e4b-8275-4dcd1b475160" width="30"></img>
 ```
 #include "pico/stdlib.h"
 #include "FreeRTOS.h"
