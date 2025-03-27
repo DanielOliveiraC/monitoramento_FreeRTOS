@@ -1,18 +1,18 @@
-# Projeto: Controle de LED e Botão com FreeRTOS no Raspberry Pi Pico W <img src="https://github.com/user-attachments/assets/c027dd6c-cd57-463e-88f1-4452e381bce7" width="40"></img>
+# Projeto: Controle de LED e Botão com FreeRTOS no Raspberry Pi Pico W <img src="https://github.com/user-attachments/assets/af1e5dbf-42ec-4140-b3d5-53439a8c0f5d" width="40"></img>
 
-## Descrição <img src="https://github.com/user-attachments/assets/1c825e92-2f29-4899-93bf-88f1165aee8f" width="30"></img>
+## Descrição <img src="https://github.com/user-attachments/assets/c055db6c-9033-4a05-bc4d-dd736626a6ef" width="30"></img>
 Este projeto é desenvolvido em C para o Raspberry Pi Pico W e utiliza o sistema operacional em tempo real FreeRTOS. Ele consiste em três tasks (tarefas) principais:
 
 1. Task de Monitoramento do Botão: Detecta o estado do botão conectado ao pino 5.
 2. Task de Processamento do Estado do Botão: Processa o estado do botão e envia notificações para a task que controla o LED.
 3. Task de Controle do LED: Aciona ou desliga o LED conectado ao pino 12, de acordo com as notificações recebidas da task de processamento.
 
-## Como Funciona <img src="https://github.com/user-attachments/assets/a9b23893-9302-45de-9995-5cb7a7b832d5" width="30"></img>
+## Como Funciona <img src="https://github.com/user-attachments/assets/2f0144fd-d8a1-4fba-8d1a-95be451c9e22" width="30"></img>
 - Quando o botão é pressionado, a task de monitoramento atualiza a variável button_state.
 - A task de processamento verifica periodicamente o estado do botão e notifica a task do LED se o botão estiver pressionado.
 - A task do LED acende o LED por um curto intervalo de tempo ao receber a notificação.
 
-## Estrutura do Código <img src="https://github.com/user-attachments/assets/124b6345-6e3a-4966-8ba8-db6c3feb9ba8" width="30"></img>
+## Estrutura do Código <img src="https://github.com/user-attachments/assets/59ce126f-72d6-43ad-8381-2ced4f2ac2ad" width="30"></img>
 ### Importações e Pinagem <img src="https://github.com/user-attachments/assets/76f0624e-6cfa-4d70-8661-9caa7ed44352" width="30"></img>
 ```
 #include "pico/stdlib.h"
@@ -25,7 +25,7 @@ const uint led_pin = 12;
 int button_state = 0;
 ```
 
-### Tasks <img src="https://github.com/user-attachments/assets/3bfeb98b-607c-4d42-958e-3e7f5a03b855" width="30"></img>
+### Tasks <img src="https://github.com/user-attachments/assets/355c0819-acc0-46db-be53-b0d3a269facb" width="30"></img>
 - Task para Monitorar o Botão:
 ```
 void vButtonTask() {
@@ -87,18 +87,18 @@ int main(void) {
 }
 ```
 
-## Importante: Configuração da variável de Ambiente do FreeRTOS <img src="https://github.com/user-attachments/assets/6e4e6bd3-4c88-4639-b608-8d6e933c0976" width="30"></img>
+## Importante: Configuração da variável de Ambiente do FreeRTOS <img src="https://github.com/user-attachments/assets/ae072ec4-675e-440b-8ded-44cf31269c3a" width="30"></img>
 Para que o projeto funcione corretamente, é necessário configurar a variável de ambiente do FreeRTOS no seu sistema. Neste projeto, o FreeRTOS não está incluído diretamente. Portanto, se o projeto for baixado e rodado em outro computador, haverá uma incompatibilidade devido ao caminho da variável de ambiente. Certifique-se de:
 
 1. Baixar o FreeRTOS
 2. Configurar a variável de ambiente `FREERTOS_PATH` para apontar para o diretório do FreeRTOS
 
-### Linux <img src="https://github.com/user-attachments/assets/1ea71d74-4d29-4217-85ed-f6864acf2470" width="30"></img>
+### Linux <img src="https://github.com/user-attachments/assets/5d0af694-a4e2-405a-b0b1-1f5f25b9ebaf" width="30"></img>
 ```
 export FREERTOS_PATH=/caminho/para/FreeRTOS
 ```
 
-### Windows (PowerShell) <img src="https://github.com/user-attachments/assets/1f75261c-4d7b-4874-8051-2d0162d6fe3b" width="30"></img>
+### Windows (PowerShell) <img src="https://github.com/user-attachments/assets/a91474dd-6a35-4e30-8534-a2f1aa1123b8" width="30"></img>
 ```
 $env:FREERTOS_PATH = "C:\caminho\para\FreeRTOS"
 ```
