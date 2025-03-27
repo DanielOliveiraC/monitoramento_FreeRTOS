@@ -14,7 +14,7 @@ Este projeto é desenvolvido em C para o Raspberry Pi Pico W e utiliza o sistema
 
 ## Estrutura do Código <img src="https://github.com/user-attachments/assets/59ce126f-72d6-43ad-8381-2ced4f2ac2ad" width="30"></img>
 ### Importações e Pinagem <img src="https://github.com/user-attachments/assets/b7bb9574-715f-4e4b-8275-4dcd1b475160" width="30"></img>
-```
+```c
 #include "pico/stdlib.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -27,7 +27,7 @@ int button_state = 0;
 
 ### Tasks <img src="https://github.com/user-attachments/assets/355c0819-acc0-46db-be53-b0d3a269facb" width="30"></img>
 - Task para Monitorar o Botão:
-```
+```c
 void vButtonTask() {
     for (;;) {
         if (!gpio_get(button_pin)) {
@@ -41,7 +41,7 @@ void vButtonTask() {
 ```
 
 - Task para Processamento do Estado Botão:
-```
+```c
 void vProcessTask(void *pvParameters) {
     TaskHandle_t *vLedTask_Handle = (TaskHandle_t *)pvParameters;
     for (;;) {
@@ -54,7 +54,7 @@ void vProcessTask(void *pvParameters) {
 ```
 
 - Task para Controle do LED:
-```
+```c
 void vLedTask(void *pvParameters) {
     for (;;) {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -67,7 +67,7 @@ void vLedTask(void *pvParameters) {
 ```
 
 - Função Main (*Função principal*):
-```
+```c
 int main(void) {
     TaskHandle_t vLedTask_Handle = NULL;
 
@@ -94,12 +94,12 @@ Para que o projeto funcione corretamente, é necessário configurar a variável 
 2. Configurar a variável de ambiente `FREERTOS_PATH` para apontar para o diretório do FreeRTOS
 
 ### Linux <img src="https://github.com/user-attachments/assets/5d0af694-a4e2-405a-b0b1-1f5f25b9ebaf" width="30"></img>
-```
+```bash
 export FREERTOS_PATH=/caminho/para/FreeRTOS
 ```
 
 ### Windows (PowerShell) <img src="https://github.com/user-attachments/assets/a91474dd-6a35-4e30-8534-a2f1aa1123b8" width="30"></img>
-```
+```bash
 $env:FREERTOS_PATH = "C:\caminho\para\FreeRTOS"
 ```
 Após o download do FreeRTOS e devida configuração da variável de ambiente `FREERTOS_PATH`, o código está pronto para testes! 
